@@ -7,7 +7,7 @@ import jakarta.persistence.Embeddable;
 import lombok.Data;
 
 @Embeddable
-@Data
+//@Data
 public class ProductPurchasePK implements Serializable{
     
     /**
@@ -17,4 +17,20 @@ public class ProductPurchasePK implements Serializable{
     private Integer productId;
     @Column(name = "purchaseId")
     private Integer purchaseId;
+
+    public Integer getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Integer productId) {
+        this.productId = productId;
+    }
+
+    public Integer getPurchaseId() {
+        return purchaseId;
+    }
+
+    public void setPurchaseId(Integer purchaseId) {
+        this.purchaseId = purchaseId;
+    }
 }

@@ -12,7 +12,7 @@ import lombok.Data;
 
 @Entity
 @Table(name = "products")
-@Data
+//@Data
 public class Product {
     
     /**
@@ -20,8 +20,8 @@ public class Product {
     */
 
     @Id
-    @Column(name = "productId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "productId")
     private Integer productId;
     @Column(name = "name")
     private String name;
@@ -33,6 +33,8 @@ public class Product {
     private String barCode;
     @Column(name = "state")
     private Boolean state;
+    @Column(name = "categoryId")
+    private Integer categoryId;
 
     /**
      * Relations
@@ -41,14 +43,67 @@ public class Product {
     @ManyToOne @JoinColumn(name = "categoryId", insertable = false, updatable = false)
     private Category category;
 
-    public Product() {}
+    public Integer getProductId() {
+        return productId;
+    }
 
-    public Product(Integer productId, String name, Double salesPrice, Integer stock, String barCode, Boolean state) {
+    public void setProductId(Integer productId) {
         this.productId = productId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public Double getSalesPrice() {
+        return salesPrice;
+    }
+
+    public void setSalesPrice(Double salesPrice) {
         this.salesPrice = salesPrice;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
         this.stock = stock;
+    }
+
+    public String getBarCode() {
+        return barCode;
+    }
+
+    public void setBarCode(String barCode) {
         this.barCode = barCode;
+    }
+
+    public Boolean getState() {
+        return state;
+    }
+
+    public void setState(Boolean state) {
         this.state = state;
+    }
+
+    public Integer getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

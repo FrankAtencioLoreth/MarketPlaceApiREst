@@ -12,8 +12,8 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "categories")
-@Data
+@Table(name = "categories", schema = "public")
+//@Data
 public class Category {
 
     /**
@@ -34,11 +34,35 @@ public class Category {
     @OneToMany(mappedBy = "category")
     private List<Product> products;
 
-    public Category() {}
+    public Integer getCategoryId() {
+        return categoryId;
+    }
 
-    public Category(Integer categoryId, String descripcion, Boolean state) {
+    public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
-        this.description = descripcion;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Boolean getState() {
+        return state;
+    }
+
+    public void setState(Boolean state) {
         this.state = state;
     }
+
+    public List<Product> getProducts() {
+        return products;
     }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+}

@@ -10,8 +10,8 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "customers")
-@Data
+@Table(name = "customers", schema = "public")
+//@Data
 public class Customer {
     
     /**
@@ -37,17 +37,59 @@ public class Customer {
     @OneToMany(mappedBy = "customer")
     private List<Purchase> purchase;
 
-    public Customer() {}
+    public String getCustomerId() {
+        return customerId;
+    }
 
-    public Customer(String customerId, String name, String lastName, String telephone, String address, String email) {
+    public void setCustomerId(String customerId) {
         this.customerId = customerId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    
+    public List<Purchase> getPurchase() {
+        return purchase;
+    }
 
+    public void setPurchase(List<Purchase> purchase) {
+        this.purchase = purchase;
+    }
 }

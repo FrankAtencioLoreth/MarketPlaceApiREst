@@ -1,16 +1,13 @@
 package com.platziMarket.platziMarket.persistence.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
-@Table(name = "purchase_products")
-@Data
+@Table(name = "purchase_products", schema = "public")
+//@Data
 public class ProductPurchase {
     
     /**
@@ -28,18 +25,57 @@ public class ProductPurchase {
     /**
      * Relations
     */
-    @ManyToOne @JoinColumn(name = "purchaseId", insertable = false, updatable = false)
+    @ManyToOne @MapsId("purchaseId") @JoinColumn(name = "purchaseId", insertable = false, updatable = false)
     private Purchase purchase;
 
     @ManyToOne @JoinColumn(name = "productId", insertable = false, updatable = false)
     private Product product;
 
-    public ProductPurchase(ProductPurchasePK id, Integer quantity, Double total, Boolean state) {
+    public ProductPurchasePK getId() {
+        return id;
+    }
+
+    public void setId(ProductPurchasePK id) {
         this.id = id;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
         this.total = total;
+    }
+
+    public Boolean getState() {
+        return state;
+    }
+
+    public void setState(Boolean state) {
         this.state = state;
     }
 
-    
+    public Purchase getPurchase() {
+        return purchase;
+    }
+
+    public void setPurchase(Purchase purchase) {
+        this.purchase = purchase;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 }
